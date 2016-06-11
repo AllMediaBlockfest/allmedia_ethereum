@@ -2,10 +2,22 @@
   <head>
     <title>Embark</title>
     <link rel="stylesheet" href="css/app.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="js/app.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
   <body>
-    <h3>Welcome to Embark!</h3>
-    <p>See the <a href="https://github.com/iurimatias/embark-framework/wiki">Wiki</a> to see what you can do with Embark!</p>
+    <h3>Add asset</h3>
+    <div id="add">
+        <input id=isrc placeholder="isrc" class=addAsset>
+        <input id=iswc placeholder="iswc" class=addAsset>
+        <input id=ipi placeholder="IPI" class=addAsset>
+        <input id=sacem placeholder="SACEM" class=addAsset>
+        <button id=addAsset class="btn btn-default">Ajouter</button>
+    </div>
+    <div id="play">
+        <input id=isrc placeholder="isrc" class=addAsset>
+        <button id=addAsset class="btn btn-default">Play</button>
+    </div>
   </body>
 </html>
