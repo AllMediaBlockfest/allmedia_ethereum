@@ -1,6 +1,30 @@
 $(document).ready(function() {
+//    var filter = web3.eth.filter(options);
+//
+//    // watch for changes
+//    filter.watch(function(error, result){
+//        if (!error)
+//            console.log(result);
+//    });
 
-  $("#addAsset").click(function() {
+  $("#addSacem").click(function() {
+
+      console.log("add sacem");
+      Database.newSacem(
+              $("address").val(),
+              $("country").val());
+  });
+
+  $("#addArtist").click(function() {
+
+      console.log("add artist");
+      Database.newArtist(
+              $("address").val(),
+              $("ipi").val());
+  });
+
+  $("#addAsset").click(function () {
+
       var asset = {
           isrc: $("#isrc").val(),
           iswc: $("#iswc").val(),
@@ -13,18 +37,5 @@ $(document).ready(function() {
               asset.ipi,
               asset.sacem);
       console.log(asset.iswc);
-  });
-
-  $("#playAsset").click(function() {
-      var asset = {
-          diffuser: $("#diffuser").val(),
-          isrc: $("#isrc").val(),
-          context: $("#context").val()
-      };
-      //console.log(asset);
-      Database.play(asset.diffuser,
-              asset.context,
-              asset.isrc);
-      // console.log(asset.isrc);
   });
 });

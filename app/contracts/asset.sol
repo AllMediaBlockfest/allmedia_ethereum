@@ -13,6 +13,7 @@ contract Database {
     mapping (bytes16 => Asset) public assets;
 
     event Played(bytes16 iswc, address artist, address diffuser, bytes16 context);
+    event Log(bytes16 message);
 
     function Database() {
     }
