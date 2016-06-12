@@ -1,34 +1,39 @@
 contract Database {
-    mapping (bytes16 => address) public database;
+    struct Asset {
+        bytes16 iswc;
+        address artist;
+        address sacem;
+    }
+
+    // list of the SACEM id by country
+    mapping (bytes16 => address) public sacems;
+    // list of the artists by IPI code
+    mapping (bytes16 => address) public artists;
+    // list of the assets (song, ...) by isrcs
+    mapping (bytes16 => Asset) public assets;
+
+    event Played(bytes16 iswc, address artist, address diffuser, bytes16 context);
 
     function Database() {
+    }
+
+    function newSacem(address sacem, bytes16 _country) {
+        sacems[_country] = sacem;
+    }
+
+    function newArtist(address artist, bytes16 _ipi) {
+        artists[_ipi] = artist;
     }
 
     function newAsset(bytes16 _isrc,
                       bytes16 _iswc,
                       bytes16 _ipi,
-                      address _sacem) public {
-        Asset _contract = new Asset(_isrc,
-                                    _iswc,
-                                    _ipi,
-                                    _sacem);
-        database[_isrc] = _contract;
+                      bytes16 _country) public {
+        assets[_isrc] = Asset(_iswc, artists[_ipi], sacems[_country]);
     }
-}
 
-contract Asset {
-    bytes16 public isrc;
-    bytes16 public iswc;
-    bytes16 public ipi;
-    address public sacem;
-
-    function Asset(bytes16 _isrc,
-                   bytes16 _iswc,
-                   bytes16 _ipi,
-                   address _sacem) {
-        isrc = _isrc;
-        iswc = _iswc;
-        ipi = _ipi;
-        sacem = _sacem;
+    function play(address _diffuser, bytes16 _context, bytes16 _isrc) {
+        Asset asset = assets[_isrc];
+        Played(asset.iswc, asset.artist, _diffuser, _context);
     }
 }
