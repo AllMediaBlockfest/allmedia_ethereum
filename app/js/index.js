@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $("button#add").click(function() {
+  $("#add").click(function() {
 
       var asset = {
           isrc: $("#isrc").val(),
@@ -9,5 +9,6 @@ $(document).ready(function() {
           sacem: $("#sacem").val()
       };
       console.log(asset);
+      Database.newAsset(asset.isrc, asset.iswc, asset.ipi, asset.sacem);
   });
 });
