@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $("#add").click(function() {
+  $("#addAsset").click(function() {
 
       var asset = {
           isrc: $("#isrc").val(),
