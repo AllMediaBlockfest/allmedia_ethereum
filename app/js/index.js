@@ -8,7 +8,11 @@ $(document).ready(function() {
           ipi: $("#ipi").val(),
           sacem: $("#sacem").val()
       };
-      console.log(asset);
-      Database.newAsset(asset.isrc, asset.iswc, asset.ipi, asset.sacem);
+      console.log(asset.iswc);
+      Database.newAsset(asset.isrc,
+              asset.iswc,
+              asset.ipi,
+              asset.sacem);
+      console.log(asset.iswc);
   });
 });
